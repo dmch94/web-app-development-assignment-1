@@ -1,0 +1,65 @@
+{
+  "users": [
+    {
+      "firstName": "Daniel",
+      "lastName": "Hunt",
+      "email": "danhunt94@hotmail.com",
+      "password": "1234",
+      "_id": "af9f3b47-b307-4ee5-a363-7b9028370ff0"
+    },
+    {
+      "firstName": "Tobi",
+      "lastName": "McGuire",
+      "email": "spiderboy@aol.com",
+      "password": "tingly",
+      "_id": "a9acf43f-c495-447a-9794-ee3110e700d6"
+    },
+    {
+      "firstName": "Cú",
+      "lastName": "Cullan",
+      "email": "sliotar@hotmail.com",
+      "password": "hurley4hound",
+      "_id": "a23e79b7-70f5-498b-afd2-c00d1a05263f"
+    }
+  ],
+  "locations": [
+    {
+      "userid": "a23e79b7-70f5-498b-afd2-c00d1a05263f",
+      "title": "Hill of Tara",
+      "_id": "85427a70-e89e-4220-a40f-e9f8f8e2cc04"
+    },
+    {
+      "userid": "a23e79b7-70f5-498b-afd2-c00d1a05263f",
+      "title": "Tír na nÓg",
+      "_id": "ca996cdd-94c4-467d-843e-4f36ab75499b"
+    },
+    {
+      "userid": "a9acf43f-c495-447a-9794-ee3110e700d6",
+      "title": "Brooklyn Bridge",
+      "_id": "38feee26-b7d4-4309-9edd-690ba9f8bd15"
+    }
+  ],
+  "runs": [
+    {
+      "title": "CC",
+      "distance": "5K",
+      "duration": null,
+      "_id": "4267b353-6fbf-4ba2-98b3-6d50f3484b3d",
+      "locationid": "85427a70-e89e-4220-a40f-e9f8f8e2cc04"
+    },
+    {
+      "title": "CC",
+      "distance": "10K",
+      "duration": 10,
+      "_id": "ba58a49d-9324-4692-93f0-2f8bd5f31b95",
+      "locationid": "85427a70-e89e-4220-a40f-e9f8f8e2cc04"
+    },
+    {
+      "title": "PP",
+      "distance": "15",
+      "duration": 5,
+      "_id": "acc4fb8d-b7f5-4819-a94c-5ac8c8853fa9",
+      "locationid": "38feee26-b7d4-4309-9edd-690ba9f8bd15"
+    }
+  ]
+}
