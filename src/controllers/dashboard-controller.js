@@ -9,7 +9,7 @@ export const dashboardController = {
   index: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      const locations = await db.locationStore.getAllLocations(loggedInUser._id); 
+      const locations = await db.locationStore.getUserLocations(loggedInUser._id); 
       const viewData = {
         title: "SpotRun Dashboard",
         user: loggedInUser,
