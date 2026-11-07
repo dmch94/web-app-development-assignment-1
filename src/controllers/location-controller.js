@@ -30,4 +30,14 @@ export const locationController = {
       return h.redirect(`/location/${location._id}`);
     },
   },
+
+  // Delete run
+  deleteRun: {
+    handler: async function(request, h) {
+      const location = await db.locationStore.getLocationById(request.params.id);
+      await db.runStore.deleteRun(request.params.runid);
+      return h.redirect(`/location/${location._id}`);
+    },
+  },
+
 };

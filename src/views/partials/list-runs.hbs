@@ -21,6 +21,13 @@
         <td>
           {{duration}}
         </td>
+        <td>
+          {{! Delete run button}}
+          <a href="/location/{{../location._id}}/deleterun/{{_id}}" class="ui icon button">
+            <i class="fas fa-trash"></i>
+          </a>
+        </td>
+
       </tr>
     {{/each}}
   </tbody>

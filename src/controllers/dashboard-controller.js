@@ -18,7 +18,7 @@ export const dashboardController = {
       return h.view("dashboard", viewData);
     },
   },
-  // 2nd action - display add playlist function
+  // 2nd action - display add location function
   addLocation: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
@@ -30,4 +30,13 @@ export const dashboardController = {
       return h.redirect("/dashboard");
     },
   },
+
+  deleteLocation: {
+    handler: async function (request, h) {
+      const location = await db.locationStore.getLocationById(request.params.id);
+      await db.locationStore.deleteLocationById(location._id);
+      return h.redirect("/dashboard");
+    },
+  },
+
 };
