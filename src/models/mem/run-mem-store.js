@@ -27,18 +27,26 @@ export const runMemStore = {
 
   // Find run by ID
   async getRunById(id) {
-    return runs.find((run) => run._id === id);
+    let foundRun = runs.find((run) => run._id === id);
+    if (!foundRun) {
+      foundRun = null;
+    }
+    return foundRun;
   },
 
   // Find all runs from a location of a certain ID
   async getLocationRuns(locationId) {
-    return runs.filter((run) => run.locationId === locationId);
+    let foundRuns = runs.filter((run) => run.locationid === locationId);
+    if (!foundRuns) {
+      foundRuns = null;
+    }
+    return foundRuns;
   },
 
   // Delete run
   async deleteRun(id) {
     const index = runs.findIndex((run) => run._id === id);
-    runs.splice(index, 1);
+    if (index !== -1) runs.splice(index, 1);
   },
 
   // Delete all runs

@@ -18,10 +18,15 @@ export const locationJsonStore = {
 
   async getLocationById(id) {
     await db.read();
-    const list = db.data.locations.find((location) => location._id === id);
-    list.runs = await runJsonStore.getRunsByLocationId(list._id);
+    let list = db.data.locations.find((location) => location._id === id);
+    if (list) {
+      list.runs = await runJsonStore.getRunsByLocationId(list._id);
+    } else {
+      list = null;
+    }
     return list;
   },
+
 
   async getUserLocations(userid) {
     await db.read();
@@ -31,9 +36,11 @@ export const locationJsonStore = {
   async deleteLocationById(id) {
     await db.read();
     const index = db.data.locations.findIndex((location) => location._id === id);
-    db.data.locations.splice(index, 1);
+    if (index !== -1) db.data.locations.splice(index, 1);
     await db.write();
   },
+
+
 
   async deleteAllLocations() {
     db.data.locations = [];

@@ -1,7 +1,7 @@
 // Import mem stores 
-// import { userMemStore } from "./mem/user-mem-store.js";
-// import { locationMemStore } from "./mem/location-mem-store.js";
-// import { runMemStore } from "./mem/run-mem-store.js";
+import { userMemStore } from "./mem/user-mem-store.js";
+import { locationMemStore } from "./mem/location-mem-store.js";
+import { runMemStore } from "./mem/run-mem-store.js";
 
 import { userJsonStore } from "./json/user-json-store.js";
 import { locationJsonStore } from "./json/location-json-store.js";
@@ -14,9 +14,17 @@ export const db = {
   runStore: null,
 
   // Initialise database
-  init() {
-    this.userStore = userJsonStore;
-    this.locationStore = locationJsonStore;
-    this.runStore = runJsonStore;
+  init(storeType) {
+    switch (storeType) {
+      case "json":
+        this.userStore = userJsonStore;
+        this.locationStore = locationJsonStore;
+        this.runStore = runJsonStore;
+        break;
+      default:
+        this.userStore = userMemStore;
+        this.locationStore = locationMemStore;
+        this.runStore = runMemStore;
+    }
   },
 };

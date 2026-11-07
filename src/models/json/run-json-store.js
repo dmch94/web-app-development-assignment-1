@@ -18,18 +18,35 @@ export const runJsonStore = {
 
   async getRunsByLocationId(id) {
     await db.read();
-    return db.data.runs.filter((run) => run.locationid === id);
+    let foundRuns = db.data.runs.filter((run) => run.locationid === id);
+    if (!foundRuns) {
+      foundRuns = null;
+    }
+    return foundRuns;
   },
 
   async getRunById(id) {
     await db.read();
-    return db.data.runs.find((run) => run._id === id);
+    let foundRun = db.data.runs.find((run) => run._id === id);
+    if (!foundRun) {
+      foundRun = null;
+    }
+    return foundRun;
+  },
+
+  async getLocationRuns(locationId) {
+    await db.read();
+    let foundRuns = runs.filter((run) => run.locationid === locationId);
+    if (!foundRuns) {
+      foundRuns = null;
+    }
+    return foundRuns;
   },
 
   async deleteRun(id) {
     await db.read();
     const index = db.data.runs.findIndex((run) => run._id === id);
-    db.data.runs.splice(index, 1);
+    if (index !== -1) db.data.runs.splice(index, 1);
     await db.write();
   },
 
