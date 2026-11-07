@@ -2,6 +2,7 @@
 
 // Import database
 import { db } from "../models/db.js";
+import { RunSpec } from "../models/joi-schemas.js";
 
 // Export - make it available for import to other app files
 export const locationController = {
@@ -19,11 +20,19 @@ export const locationController = {
 
   // 2. Add run to chosen location and redirect to chosen location page
   addRun: {
+    validate: {
+      payload: RunSpec,
+      options: { abortEarly: false },
+      failAction: async function (request, h, error) {
+        const location = await db.locationStore.getLocationById(request.params.id);
+        return h.view("location", { title: "Add run error", location, errors: error.details }).takeover().code(400);
+      },
+    },
     handler: async function (request, h) {
       const location = await db.locationStore.getLocationById(request.params.id);
       const newRun = {
         title: request.payload.title,
-        distance: request.payload.distance,
+        artist: request.payload.artist,
         duration: Number(request.payload.duration),
       };
       await db.runStore.addRun(location._id, newRun);
