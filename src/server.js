@@ -4,8 +4,9 @@ import Vision from "@hapi/vision";
 import Handlebars from "handlebars";
 import path from "path";
 import { fileURLToPath } from "url";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import Cookie from "@hapi/cookie";
+import dotenv from "dotenv";
+import Joi from "joi";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
@@ -14,6 +15,13 @@ import { accountsController } from "./controllers/accounts-controller.js";
 // Establish location of server.js and starting point for locating other files
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Check for .env file
+const result = dotenv.config();
+if (result.error) {
+  console.log(result.error.message);
+  process.exit(1);
+}
 
 // Function for creating Hapi server
 async function init() {
@@ -27,10 +35,12 @@ async function init() {
   // Register Cookie
   await server.register(Cookie);
 
+  server.validator(Joi);
+
   server.auth.strategy("session", "cookie", {
     cookie: {
-      name: "spotrun",
-      password: "secretpasswordnotrevealedtoanyone",
+      name: process.env.COOKIE_NAME,
+      password: process.env.COOKIE_PASSWORD,
       isSecure: false,
     },
     redirectTo: "/",
