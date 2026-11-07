@@ -1,0 +1,18 @@
+{{! Form for adding new run}}
+<form class="box" action="/location/{{location._id}}/addrun" method="POST">
+  <label>Enter Your Run Details:</label>
+  <div class="field is-horizontal">
+    <div class="field-body">
+      <div class="field">
+        <input class="input" type="text" placeholder="Enter Runner" name="title">
+      </div>
+      <div class="field">
+        <input class="input" type="text" placeholder="Enter Distance (Kms)" name="distance">
+      </div>
+      <div class="field">
+        <input class="input" type="text" placeholder="Enter Duration (hh:mm:ss)" name="duration">
+      </div>
+    </div>
+  </div>
+  <button class="button is-primary">Add Your Run</button>
+</form>

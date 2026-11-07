@@ -1,0 +1,8 @@
+{{! Include menu partial}}
+{{> menu active="dashboard"}} {{! Pass 'dashboard' into menu partial for JS}}
+
+<section class="section">
+  {{! Include runs partials}}
+  {{> list-locations}}
+  {{> add-location}}
+</section>

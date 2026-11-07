@@ -1,0 +1,71 @@
+// Import resources
+import Hapi from "@hapi/hapi";
+import Vision from "@hapi/vision";
+import Handlebars from "handlebars";
+import path from "path";
+import { fileURLToPath } from "url";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Cookie from "@hapi/cookie";
+import { webRoutes } from "./web-routes.js";
+import { db } from "./models/db.js";
+import { accountsController } from "./controllers/accounts-controller.js";
+
+
+// Establish location of server.js and starting point for locating other files
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Function for creating Hapi server
+async function init() {
+  const server = Hapi.server({
+    port: 3000,
+    host: "localhost",
+  });
+  // Register Vision plugin
+  await server.register(Vision);
+
+  // Register Cookie
+  await server.register(Cookie);
+
+  server.auth.strategy("session", "cookie", {
+    cookie: {
+      name: "spotrun",
+      password: "secretpasswordnotrevealedtoanyone",
+      isSecure: false,
+    },
+    redirectTo: "/",
+    validate: accountsController.validate,
+  });
+  // server.auth.default("session");
+
+  // Establish Handlebars, and set locations of views, layouts, partials files
+  server.views({
+    engines: {
+      hbs: Handlebars,
+    },
+    relativeTo: __dirname,
+    path: "./views",
+    layoutPath: "./views/layouts",
+    partialsPath: "./views/partials",
+    layout: true,   // enables layouts
+    isCached: false,    // disables cache
+  });
+
+  // Initialise database
+  db.init();
+
+
+  server.route(webRoutes);
+
+  // Start server once Hapi has started
+  await server.start();
+  console.log("Server running on %s", server.info.uri);
+}
+
+process.on("unhandledRejection", (err) => {
+  console.log(err);
+  process.exit(1);
+});
+
+// Run the function
+init();

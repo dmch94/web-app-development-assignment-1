@@ -1,0 +1,11 @@
+{{! Include menu partial}}
+{{> menu}}
+
+{{! Display location title, list of associated runs and the add run button}}
+<section class="section">
+  <div class="title">
+    {{location.title}}
+  </div>
+  {{> list-runs}}
+  {{> add-run}}
+</section>

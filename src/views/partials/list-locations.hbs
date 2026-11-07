@@ -1,0 +1,15 @@
+{{! Each loop for displaying  locations}}
+{{#each locations}}
+  <div class="box box-link-hover-shadow">
+    {{! Location title}}
+    <h2 class="title">
+      {{title}}
+    </h2>
+    {{! Link to location page}}
+    <a href="/location/{{_id}}" class="button">
+      <span class="icon is-small">
+        <i class="fas fa-folder-open"></i>    {{! Folder icon}}
+      </span>
+    </a>
+  </div>
+{{/each}}

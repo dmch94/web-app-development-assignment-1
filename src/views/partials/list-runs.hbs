@@ -1,0 +1,27 @@
+{{! Display runs in a table}}
+<table class="table is-fullwidth">
+  <thead>
+    {{! Run headings}}
+    <tr>
+      <th>Runner</th>
+      <th>Distance</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{! Each loop displaying run info}}
+    {{#each location.runs}}
+      <tr>
+        <td>
+          {{title}}
+        </td>
+        <td>
+          {{distance}}
+        </td>
+        <td>
+          {{duration}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
