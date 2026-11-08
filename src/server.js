@@ -10,6 +10,7 @@ import Joi from "joi";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
+import { apiRoutes } from "./api-routes.js";
 
 
 // Establish location of server.js and starting point for locating other files
@@ -64,7 +65,7 @@ async function init() {
   // Initialise database
   db.init("mongo");
 
-
+  server.route(apiRoutes);
   server.route(webRoutes);
 
   // Start server once Hapi has started
