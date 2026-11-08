@@ -1,7 +1,12 @@
+// User API - provides tools for other applications to access and edit databases directly
+// Receives requests from applications (via spotrun-service.js) and performs them
+
+// Import Resources
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 
 export const userApi = {
+  // Find all users endpoint
   find: {
     auth: false,
     handler: async function (request, h) {
@@ -14,6 +19,7 @@ export const userApi = {
     },
   },
 
+  // Find single user endpoint
   findOne: {
     auth: false,
     handler: async function (request, h) {
@@ -29,6 +35,7 @@ export const userApi = {
     },
   },
 
+  // Create a new user endpoint
   create: {
     auth: false,
     handler: async function (request, h) {
@@ -44,6 +51,7 @@ export const userApi = {
     },
   },
 
+  // Delete all users endpoint
   deleteAll: {
     auth: false,
     handler: async function (request, h) {

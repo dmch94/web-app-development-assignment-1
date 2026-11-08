@@ -1,3 +1,6 @@
+// Test user API 
+
+// Import resources
 import { assert } from "chai";
 import { spotrunService } from "./spotrun-service.js";
 import { assertSubset } from "../test-utils.js";
@@ -11,8 +14,7 @@ suite("User API tests", () => {
       testUsers[i] = await spotrunService.createUser(testUsers[i]);
     }
   });
-  teardown(async () => {
-  });
+  teardown(async () => {});
 
   test("create a user", async () => {
     const newUser = await spotrunService.createUser(singleUserTest);
@@ -53,7 +55,4 @@ suite("User API tests", () => {
       assert.equal(error.response.data.statusCode, 404);
     }
   });
-
-
-
 });
