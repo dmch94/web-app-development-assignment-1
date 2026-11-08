@@ -8,12 +8,6 @@ export const accountsController = {
       return h.view("main", { title: "Welcome to SpotRun" });
     },
   },
-  showSignup: {
-    auth: false,
-    handler: function (request, h) {
-      return h.view("signup-view", { title: "Sign up for SpotRun" });
-    },
-  },
 
   signup: {
     auth: false,
@@ -21,7 +15,7 @@ export const accountsController = {
       payload: UserSpec,
       options: { abortEarly: false },
       failAction: function (request, h, error) {
-        return h.view("signup-view", { title: "Sign up error", errors: error.details }).takeover().code(400);
+        return h.view("main", { title: "Sign up error", errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
@@ -31,20 +25,13 @@ export const accountsController = {
     },
   },
 
-  showLogin: {
-    auth: false,
-    handler: function (request, h) {
-      return h.view("login-view", { title: "Login to SpotRun" });
-    },
-  },
-
   login: {
     auth: false,
     validate: {
       payload: UserCredentialsSpec,
       options: { abortEarly: false },
       failAction: function (request, h, error) {
-        return h.view("login-view", { title: "Log in error", errors: error.details }).takeover().code(400);
+        return h.view("main", { title: "Log in error", errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
@@ -57,7 +44,7 @@ export const accountsController = {
       return h.redirect("/dashboard");
     },
   },
-  
+
   logout: {
     auth: false,
     handler: function (request, h) {

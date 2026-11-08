@@ -2,6 +2,57 @@
 {{> welcome-menu}}
 
 
-<section class="section">
-  <p> Sign up or Log in... </p>
+<section class="pt-5">
+  <div class="columns is-variable is-8">
+    <div class="column is-6 is-flex is-flex-direction-column">
+      <div class="box">
+        <p class="pb-2">New to SpotRun? Start here!</p>
+        <h2 class="title is-3">Sign up</h2>
+        <form action="/register" method="POST">
+          <label class="label">Name</label>
+          <div class="field is-horizontal">
+            <div class="field-body">
+              <div class="field">
+                <input class="input" type="text" placeholder="Enter first name" name="firstName">
+              </div>
+              <div class="field">
+                <input class="input" type="text" placeholder="Enter last name" name="lastName">
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Email</label> <input class="input" type="text" placeholder="Enter email" name="email">
+          </div>
+          <div class="field">
+            <label class="label">Password</label> <input class="input" type="password" placeholder="Enter Password" name="password">
+          </div>
+          <div class="field is-grouped">
+            <button class="button is-link">Submit</button>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+
+    <div class="column is-6 is-flex is-flex-direction-column">
+      <div class="box">
+        <p class="pb-2">Have an account already?</p>
+        <h2 class="title is-3">Log in</h2>
+        <form action="/authenticate" method="POST">
+          <div class="field">
+            <label class="label">Email</label> <input class="input" type="text" placeholder="Enter email" name="email">
+          </div>
+          <div class="field">
+            <label class="label">Password</label> <input class="input" type="password" placeholder="Enter Password" name="password">
+          </div>
+          <div class="field is-grouped">
+            <button class="button is-link">Submit</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+
+  </div>
 </section>
