@@ -1,71 +1,72 @@
-export const maggie = {
-  firstName: "Maggie",
-  lastName: "Simpson",
-  email: "maggie@simpson.com",
-  password: "secret"
+
+export const singleUserTest = {
+  firstName: "Sonia",
+  lastName: "O'Sullivan",
+  email: "sonia.osullivan@example.com",
+  password: "SoniaRun2026!"
 };
 
 export const testUsers = [
   {
-    firstName: "Homer",
-    lastName: "Simpson",
-    email: "homer@simpson.com",
-    password: "secret"
+    firstName: "Eamonn",
+    lastName: "Coghlan",
+    email: "eamonn.coghlan@example.com",
+    password: "EamonnRun2026!"
   },
   {
-    firstName: "Marge",
-    lastName: "Simpson",
-    email: "marge@simpson.com",
-    password: "secret"
+    firstName: "John",
+    lastName: "Treacy",
+    email: "john.treacy@example.com",
+    password: "TreacyRun2026!"
   },
   {
-    firstName: "Bart",
-    lastName: "Simpson",
-    email: "bart@simpson.com",
-    password: "secret"
+    firstName: "Catherina",
+    lastName: "McKiernan",
+    email: "catherina.mckiernan@example.com",
+    password: "CatherinaRun2026!"
   }
 ];
 
-export const mozart = {
-  title: "Mozart Favourites"
+export const singleLocationTest = {
+  title: "Phoenix Park"
 };
 
-export const concerto = {
-  "title": "Violin Concerto No. 3",
-  "distance": 8,
-  "duration": 15
+export const singleRunTest = {
+  title: "Sonia O'Sullivan",
+  distance: 5,
+  duration: 22
 };
 
-export const beethoven = {
-  title: "Mozart Favourites"
+export const mainTestLocation = {
+  title: "Wicklow Way"
 };
 
 export const testLocations = [
   {
-    title: "Beethoven Sonatas"
+    title: "Phoenix Park"
   },
   {
-    title: "Beethoven Concertos"
+    title: "Howth Cliff Walk"
   },
   {
-    title: "Beethoven Symphonies"
+    title: "Great South Wall"
   }
 ];
 
 export const testRuns = [
   {
-    "title": "Piano Sonata No. 3",
-    "distance": 8,
-    "duration": 5
+    title: "Sonia O'Sullivan",
+    distance: 5,
+    duration: 22
   },
   {
-    "title": "Piano Sonata No. 7",
-    "distance": 6,
-    "duration": 6
+    title: "Eamonn Coghlan",
+    distance: 10,
+    duration: 45
   },
   {
-    "title": "Piano Sonata No. 10",
-    "distance": 5,
-    "duration": 4
+    title: "John Treacy",
+    distance: 15,
+    duration: 75
   }
 ];

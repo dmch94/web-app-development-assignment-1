@@ -1,32 +1,32 @@
 import { assert } from "chai";
 import { db } from "../../src/models/db.js";
-import { testLocations, testRuns, beethoven, mozart, concerto, testUsers } from "../fixtures.js";
+import { testLocations, testRuns, mainTestLocation, singleLocationTest, singleRunTest, testUsers } from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
 suite("Run Model tests", () => {
 
-  let beethovenList = null;
+  let mainLocation = null;
 
   setup(async () => {
     db.init("mongo");
     await db.locationStore.deleteAllLocations();
     await db.runStore.deleteAllRuns();
-    beethovenList = await db.locationStore.addLocation(beethoven);
+    mainLocation = await db.locationStore.addLocation(mainTestLocation);
     for (let i = 0; i < testRuns.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      testRuns[i] = await db.runStore.addRun(beethovenList._id, testRuns[i]);
+      testRuns[i] = await db.runStore.addRun(mainLocation._id, testRuns[i]);
     }
   });
 
   test("create single run", async () => {
-    const mozartList = await db.locationStore.addLocation(mozart);
-    const run = await db.runStore.addRun(mozartList._id, concerto)
+    const singleLocation = await db.locationStore.addLocation(singleLocationTest);
+    const run = await db.runStore.addRun(singleLocation._id, singleRunTest)
     assert.isNotNull(run._id);
-    assertSubset (concerto, run);
+    assertSubset (singleRunTest, run);
   });
 
   test("get multiple runs", async () => {
-    const runs = await db.runStore.getRunsByLocationId(beethovenList._id);
+    const runs = await db.runStore.getRunsByLocationId(mainLocation._id);
     assert.equal(runs.length, testRuns.length)
   });
 
@@ -39,10 +39,10 @@ suite("Run Model tests", () => {
   });
 
   test("get a run - success", async () => {
-    const mozartList = await db.locationStore.addLocation(mozart);
-    const run = await db.runStore.addRun(mozartList._id, concerto)
+    const singleLocation = await db.locationStore.addLocation(singleLocationTest);
+    const run = await db.runStore.addRun(singleLocation._id, singleRunTest)
     const newRun = await db.runStore.getRunById(run._id);
-    assertSubset (concerto, newRun);
+    assertSubset (singleRunTest, newRun);
   });
 
   test("delete One Run - success", async () => {

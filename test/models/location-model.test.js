@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import { EventEmitter } from "events";
 import { db } from "../../src/models/db.js";
-import { testLocations, mozart } from "../fixtures.js";
+import { testLocations, singleLocationTest } from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
 
@@ -18,8 +18,8 @@ suite("Location Model tests", () => {
   });
 
   test("create a location", async () => {
-    const location = await db.locationStore.addLocation(mozart);
-    assertSubset(mozart, location);
+    const location = await db.locationStore.addLocation(singleLocationTest);
+    assertSubset(singleLocationTest, location);
     assert.isDefined(location._id);
   });
 
@@ -32,9 +32,9 @@ suite("Location Model tests", () => {
   });
 
   test("get a location - success", async () => {
-    const location = await db.locationStore.addLocation(mozart);
+    const location = await db.locationStore.addLocation(singleLocationTest);
     const returnedLocation = await db.locationStore.getLocationById(location._id);
-    assertSubset(mozart, location);
+    assertSubset(singleLocationTest, location);
   });
 
   test("delete One Playist - success", async () => {
