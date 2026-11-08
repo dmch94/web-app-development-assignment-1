@@ -57,7 +57,7 @@ export const runJsonStore = {
 
   async updateRun(run, updatedRun) {
     run.title = updatedRun.title;
-    run.artist = updatedRun.artist;
+    run.distance = updatedRun.distance;
     run.duration = updatedRun.duration;
     await db.write();
   },

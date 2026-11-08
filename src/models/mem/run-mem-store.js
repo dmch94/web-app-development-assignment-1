@@ -57,7 +57,7 @@ export const runMemStore = {
   // Update existing run
   async updateRun(run, updatedRun) {
     run.title = updatedRun.runner;
-    run.artist = updatedRun.distance;
+    run.distance = updatedRun.distance;
     run.duration = updatedRun.duration;
   },
 };

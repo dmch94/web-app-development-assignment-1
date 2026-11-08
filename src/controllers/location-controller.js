@@ -32,7 +32,7 @@ export const locationController = {
       const location = await db.locationStore.getLocationById(request.params.id);
       const newRun = {
         title: request.payload.title,
-        artist: request.payload.artist,
+        distance: request.payload.distance,
         duration: Number(request.payload.duration),
       };
       await db.runStore.addRun(location._id, newRun);

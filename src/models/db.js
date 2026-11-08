@@ -7,6 +7,12 @@ import { userJsonStore } from "./json/user-json-store.js";
 import { locationJsonStore } from "./json/location-json-store.js";
 import { runJsonStore } from "./json/run-json-store.js";
 
+import { connectMongo } from "./mongo/connect.js";
+import { userMongoStore } from "./mongo/user-mongo-store.js";
+import { locationMongoStore } from "./mongo/location-mongo-store.js";
+import { runMongoStore } from "./mongo/run-mongo-store.js";
+
+
 // Export - make it available for import to other app files
 export const db = {
   userStore: null,
@@ -20,6 +26,12 @@ export const db = {
         this.userStore = userJsonStore;
         this.locationStore = locationJsonStore;
         this.runStore = runJsonStore;
+        break;
+      case "mongo":
+        this.userStore = userMongoStore;
+        this.locationStore = locationMongoStore;
+        this.runStore = runMongoStore;
+        connectMongo();
         break;
       default:
         this.userStore = userMemStore;

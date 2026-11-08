@@ -30,6 +30,16 @@ export const mozart = {
   title: "Mozart Favourites"
 };
 
+export const concerto = {
+  "title": "Violin Concerto No. 3",
+  "distance": 8,
+  "duration": 15
+};
+
+export const beethoven = {
+  title: "Mozart Favourites"
+};
+
 export const testLocations = [
   {
     title: "Beethoven Sonatas"
@@ -39,5 +49,23 @@ export const testLocations = [
   },
   {
     title: "Beethoven Symphonies"
+  }
+];
+
+export const testRuns = [
+  {
+    "title": "Piano Sonata No. 3",
+    "distance": 8,
+    "duration": 5
+  },
+  {
+    "title": "Piano Sonata No. 7",
+    "distance": 6,
+    "duration": 6
+  },
+  {
+    "title": "Piano Sonata No. 10",
+    "distance": 5,
+    "duration": 4
   }
 ];

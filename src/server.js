@@ -62,7 +62,7 @@ async function init() {
   });
 
   // Initialise database
-  db.init();
+  db.init("mongo");
 
 
   server.route(webRoutes);
