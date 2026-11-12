@@ -12,17 +12,18 @@
     "testmodels": "mocha test/models/**/*.js",
     "testapi": "mocha test/api/**/*.js"
   },
-
   "nodemonConfig": {
-    "ignore": ["src/models/json/**/*.json"]
+    "ignore": [
+      "src/models/json/**/*.json"
+    ]
   },
-
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@hapi/boom": "^10.0.1",
     "@hapi/cookie": "^12.0.1",
     "@hapi/hapi": "^21.4.10",
+    "@hapi/inert": "^7.1.3",
     "@hapi/vision": "^7.0.3",
     "chai": "^6.3.0",
     "dotenv": "^18.0.9",

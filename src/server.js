@@ -7,11 +7,11 @@ import { fileURLToPath } from "url";
 import Cookie from "@hapi/cookie";
 import dotenv from "dotenv";
 import Joi from "joi";
+import Inert from "@hapi/inert";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { apiRoutes } from "./api-routes.js";
-
 
 // Establish location of server.js and starting point for locating other files
 const __filename = fileURLToPath(import.meta.url);
@@ -32,6 +32,9 @@ async function init() {
   });
   // Register Vision plugin
   await server.register(Vision);
+
+  // Register Inert plugin
+  await server.register(Inert);
 
   // Register Cookie
   await server.register(Cookie);
