@@ -8,8 +8,15 @@
     "start": "node src/server.js",
     "dev": "nodemon --exec npm start",
     "lint": "eslint . --ext .js",
-    "test": "mocha"
+    "test": "mocha test/**/*.js",
+    "testmodels": "mocha test/models/**/*.js",
+    "testapi": "mocha test/api/**/*.js"
   },
+
+  "nodemonConfig": {
+    "ignore": ["src/models/json/**/*.json"]
+  },
+
   "author": "",
   "license": "ISC",
   "dependencies": {
