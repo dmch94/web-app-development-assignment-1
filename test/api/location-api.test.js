@@ -1,26 +1,27 @@
+// Import resources
 import { EventEmitter } from "events";
 import { assert } from "chai";
 import { spotrunService } from "./spotrun-service.js";
 import { assertSubset } from "../test-utils.js";
-import { singleLocationTest, mainTestLocation, testLocations } from "../fixtures.js";
+import { singleUserTest, mainTestLocation, testLocations } from "../fixtures.js";
 
 EventEmitter.setMaxListeners(25);
 
 suite("Location API tests", () => {
-
   let user = null;
 
+  // Clear databases and create test user
   setup(async () => {
     await spotrunService.deleteAllLocations();
     await spotrunService.deleteAllUsers();
-    user = await spotrunService.createUser(singleLocationTest);
+    user = await spotrunService.createUser(singleUserTest);
     mainTestLocation.userid = user._id;
   });
 
   teardown(async () => {});
 
   test("create location", async () => {
-        const returnedLocation = await spotrunService.createLocation(mainTestLocation);
+    const returnedLocation = await spotrunService.createLocation(mainTestLocation);
     assert.isNotNull(returnedLocation);
     assertSubset(mainTestLocation, returnedLocation);
   });
@@ -37,8 +38,7 @@ suite("Location API tests", () => {
     }
   });
 
-
-   test("create multiple locations", async () => {
+  test("create multiple locations", async () => {
     for (let i = 0; i < testLocations.length; i += 1) {
       testLocations[i].userid = user._id;
       // eslint-disable-next-line no-await-in-loop

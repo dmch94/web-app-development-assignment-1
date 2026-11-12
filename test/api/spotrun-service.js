@@ -52,4 +52,29 @@ export const spotrunService = {
     const res = await axios.get(`${this.spotrunUrl}/api/locations/${id}`);
     return res.data;
   },
+
+    async createRun(id, run) {
+    const res = await axios.post(`${this.spotrunUrl}/api/locations/${id}/runs`, run);
+    return res.data;
+  },
+
+  async deleteAllRuns() {
+    const response = await axios.delete(`${this.spotrunUrl}/api/runs`);
+    return response.data;
+  },
+
+  async deleteRun(id) {
+    const response = await axios.delete(`${this.spotrunUrl}/api/runs/${id}`);
+    return response;
+  },
+
+  async getAllRuns() {
+    const res = await axios.get(`${this.spotrunUrl}/api/runs`);
+    return res.data;
+  },
+
+  async getRun(id) {
+    const res = await axios.get(`${this.spotrunUrl}/api/runs/${id}`);
+    return res.data;
+  },
 };
