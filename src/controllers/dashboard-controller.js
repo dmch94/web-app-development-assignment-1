@@ -32,11 +32,13 @@ export const dashboardController = {
     },
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      const newPlayList = {
+      const newLocation = {
         userid: loggedInUser._id,
         title: request.payload.title,
+        latitude: request.payload.latitude,
+        longitude: request.payload.longitude
       };
-      await db.locationStore.addLocation(newPlayList);
+      await db.locationStore.addLocation(newLocation);
       return h.redirect("/dashboard");
     },
   },

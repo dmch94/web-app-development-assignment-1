@@ -41,6 +41,8 @@ export const RunArray = Joi.array().items(RunSpec).label("RunArray");
 export const LocationSpec = Joi.object()
   .keys({
     title: Joi.string().example("Example Location").required(),
+    latitude: Joi.number().example(54).required(),
+    longitude: Joi.number().example(-6).required(),
     userid: IdSpec,
     runs: Joi.array().items(RunSpec),
     _id: IdSpec,

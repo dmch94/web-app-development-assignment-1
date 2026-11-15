@@ -30,7 +30,9 @@ export const testUsers = [
 ];
 
 export const singleLocationTest = {
-  title: "Phoenix Park"
+  title: "Phoenix Park",
+  latitude: 53.36,
+  longitude: -6.32
 };
 
 export const singleRunTest = {
@@ -40,18 +42,27 @@ export const singleRunTest = {
 };
 
 export const mainTestLocation = {
-  title: "Wicklow Way"
+  title: "Wicklow Way",
+  latitude: 53.27,
+  longitude: -6.26
+
 };
 
 export const testLocations = [
   {
-    title: "Phoenix Park"
+    title: "Phoenix Park",
+    latitude: 53.36,
+    longitude: -6.32
   },
   {
-    title: "Howth Cliff Walk"
+    title: "Howth Cliff Walk",
+    latitude: 53.39,
+    longitude: -6.07
   },
   {
-    title: "Great South Wall"
+    title: "Great South Wall",
+    latitude: 53.34,
+    longitude: -6.17
   }
 ];
 
