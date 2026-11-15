@@ -1,6 +1,5 @@
 // Import controllers
 import { dashboardController } from "./controllers/dashboard-controller.js";
-import { aboutController } from "./controllers/about-controller.js";
 import { locationController } from "./controllers/location-controller.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 
@@ -16,7 +15,6 @@ export const webRoutes = [
     { method: "POST", path: "/authenticate", config: accountsController.login },
   
     { method: "GET", path: "/dashboard", config: dashboardController.index },
-    { method: "GET", path: "/about", config: aboutController.index },
     { method: "GET", path: "/location/{id}", config: locationController.index },
     
     { method: "POST", path: "/dashboard/addlocation", config: dashboardController.addLocation },
