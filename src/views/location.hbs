@@ -6,12 +6,17 @@
     <div class="title">
       {{location.title}}
     </div>
-    <div class="title">
-      {{location.latitude}}
+    <div class="is-flex">
+      <div>
+        <p>Latitude: </p>
+        {{location.latitude}}
+      </div>
+      <div>
+        <p>Longitude: </p>
+        {{location.longitude}}
+      </div>
     </div>
-    <div class="title">
-      {{location.longitude}}
-    </div>
+
     {{> list-runs}}
     {{> add-run}}
   </div>
