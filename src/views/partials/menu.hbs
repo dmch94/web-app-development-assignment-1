@@ -1,5 +1,5 @@
 {{! Navigation Menu}}
-<nav class="navbar">
+<nav class="navbar container">
   <div class="navbar-brand">
     {{! Include spotrun brand partial}}
     {{> spotrun-brand}}
@@ -19,5 +19,5 @@
 {{! Makes current page button primary}}
 <script>
   // Find element by id (taken from controller) then adds class to the corresponding button
-  document.getElementById("{{active}}").classList.add("is-primary");
+  document.getElementById("{{active}}").classList.add("is-link");
 </script>
