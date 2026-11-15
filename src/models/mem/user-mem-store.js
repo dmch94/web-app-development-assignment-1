@@ -3,7 +3,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { v4 } from "uuid";
 
-// Intiailise users array
+// Intialise users array
 let users = [];
 
 export const userMemStore = {

@@ -1,7 +1,9 @@
+// Imports
 import * as cloudinary from "cloudinary";
 import { writeFileSync } from "fs";
 import dotenv from "dotenv";
 
+// .env configuration
 dotenv.config();
 
 const credentials = {
@@ -11,6 +13,7 @@ const credentials = {
 };
 cloudinary.config(credentials);
 
+// Image store
 export const imageStore = {
 
   getAllImages: async function() {

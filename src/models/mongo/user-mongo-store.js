@@ -1,6 +1,8 @@
+// Import
 import Mongoose from "mongoose";
 import { User } from "./user.js";
 
+// Users store
 export const userMongoStore = {
   async getAllUsers() {
     const users = await User.find().lean();

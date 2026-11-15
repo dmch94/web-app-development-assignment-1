@@ -1,14 +1,14 @@
-// Location Controller
+// Location Controller | location-controller.js
 
-// Import database
+// Imports
 import { db } from "../models/db.js";
 import { RunSpec } from "../models/joi-schemas.js";
 import { imageStore } from "../models/image-store.js";
 
-// Export - make it available for import to other app files
+// Creates and exports object
 export const locationController = {
+  // 1. Display chosen location
   index: {
-    // 1. Display chosen location
     handler: async function (request, h) {
       const location = await db.locationStore.getLocationById(request.params.id);
       const viewData = {
@@ -19,16 +19,22 @@ export const locationController = {
     },
   },
 
-  // 2. Add run to chosen location and redirect to chosen location page
+  // 2. Add run to chosen location
   addRun: {
+    
+    // Validate run info
     validate: {
-      payload: RunSpec,
+      payload: RunSpec,   // Check against Joi schema
       options: { abortEarly: false },
+
+      // If failed reload page with erro messages
       failAction: async function (request, h, error) {
         const location = await db.locationStore.getLocationById(request.params.id);
         return h.view("location", { title: "Add run error", location, errors: error.details }).takeover().code(400);
       },
     },
+
+    // Add Run
     handler: async function (request, h) {
       const location = await db.locationStore.getLocationById(request.params.id);
       const newRun = {
@@ -41,7 +47,7 @@ export const locationController = {
     },
   },
 
-  // Delete run
+  // 3. Delete run
   deleteRun: {
     handler: async function (request, h) {
       const location = await db.locationStore.getLocationById(request.params.id);
@@ -50,6 +56,7 @@ export const locationController = {
     },
   },
 
+  // 4. Upload location image
   uploadImage: {
     handler: async function (request, h) {
       try {

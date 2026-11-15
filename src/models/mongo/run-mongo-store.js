@@ -1,6 +1,8 @@
+// Imports
 import Mongoose from "mongoose";
 import { Run } from "./run.js";
 
+// Runs store 
 export const runMongoStore = {
   async getAllRuns() {
     const runs = await Run.find().lean();

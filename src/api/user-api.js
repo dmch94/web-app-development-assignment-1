@@ -1,13 +1,17 @@
-// User API - provides tools for other applications to access and edit databases directly
-// Receives requests from applications (via spotrun-service.js) and performs them
+// User API - user-api.js 
+// Retrieves, creates, deletes users 
 
-// Import Resources
+// Imports
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 import { UserSpec, UserArray, IdSpec } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
 
+// See location-api.js for full comments
+
 export const userApi = {
+
+  // 1. Find all users
   find: {
     auth: false,
     handler: async function (request, h) {
@@ -19,12 +23,12 @@ export const userApi = {
       }
     },
     tags: ["api"],
-    description: "Get all userApi",
-    notes: "Returns details of all userApi",
+    description: "Get all users",
+    notes: "Returns details of all users",
     response: { schema: UserArray, failAction: validationError },
   },
 
-  // Find single user endpoint
+  // 2. Find a single specific user
   findOne: {
     auth: false,
     handler: async function (request, h) {
@@ -45,7 +49,7 @@ export const userApi = {
     response: { schema: UserSpec, failAction: validationError },
   },
 
-  // Create a new user endpoint
+  // 3. Create a new user 
     create: {
     auth: false,
     handler: async function(request, h) {
@@ -66,6 +70,7 @@ export const userApi = {
     response: { schema: UserSpec, failAction: validationError },
   },
 
+  // 4. Delete all users
   deleteAll: {
     auth: false,
     handler: async function(request, h) {
@@ -77,8 +82,8 @@ export const userApi = {
       }
     },
     tags: ["api"],
-    description: "Delete all userApi",
-    notes: "All userApi removed from SpotRun",
+    description: "Delete all users",
+    notes: "All users removed from SpotRun",
   },
 
 };

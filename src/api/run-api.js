@@ -1,9 +1,18 @@
+// Run API - run-api.js 
+// Retrieves, creates, deletes runs 
+
+// Imports
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 import { RunSpec, RunArray, IdSpec } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
 
+// See location-api.js for full comments
+
+
 export const runApi = {
+  
+  // 1. Find all runs
   find: {
     auth: false,
     handler: async function (request, h) {
@@ -15,11 +24,12 @@ export const runApi = {
       }
     },
     tags: ["api"],
-    description: "Get all runApi",
-    notes: "Returns details of all runApi",
+    description: "Get all runs",
+    notes: "Returns details of all runs",
     response: { schema: RunArray, failAction: validationError },
   },
 
+  // 2. Find a specific run
   findOne: {
     auth: false,
     async handler(request) {
@@ -40,6 +50,7 @@ export const runApi = {
     response: { schema: RunSpec, failAction: validationError },
   },
 
+  // 3. Create a run
   create: {
     auth: false,
     handler: async function (request, h) {
@@ -54,12 +65,13 @@ export const runApi = {
       }
     },
     tags: ["api"],
-    description: "Create a Run",
+    description: "Create a run",
     notes: "Returns the newly created run",
     validate: { payload: RunSpec, failAction: validationError },
     response: { schema: RunSpec, failAction: validationError },
   },
 
+  // 4. Delet all runs
   deleteAll: {
     auth: false,
     handler: async function (request, h) {
@@ -71,10 +83,11 @@ export const runApi = {
       }
     },
     tags: ["api"],
-    description: "Delete all runApi",
-    notes: "All runApi removed from SpotRun",
+    description: "Delete all runs",
+    notes: "All runs removed from SpotRun",
   },
 
+  // 5. Delete a single specific run
   deleteOne: {
     auth: false,
     handler: async function (request, h) {
@@ -90,7 +103,7 @@ export const runApi = {
       }
     },
     tags: ["api"],
-    description: "Delete a specific runApi",
+    description: "Delete a specific run",
     notes: "Specific run removed from SpotRun",
     validate: { params: { id: IdSpec }, failAction: validationError },
   },

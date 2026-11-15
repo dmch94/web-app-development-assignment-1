@@ -1,12 +1,16 @@
 import Joi from "joi";
 
+
+// ID
 export const IdSpec = Joi.alternatives().try(Joi.string(), Joi.object()).description("a valid ID");
-                                                                                     
+         
+
+// User Schema
 export const UserSpec = Joi.object()
   .keys({
-    firstName: Joi.string().example("Homer").required(),
-    lastName: Joi.string().example("Simpson").required(),
-    email: Joi.string().email().example("homer@simpson.com").required(),
+    firstName: Joi.string().example("Joe").required(),
+    lastName: Joi.string().example("Bloggs").required(),
+    email: Joi.string().email().example("joe@example.com").required(),
     password: Joi.string().example("secret").required(),
     _id: IdSpec,
     __v: Joi.number(),

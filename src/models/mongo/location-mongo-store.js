@@ -1,7 +1,9 @@
+// Imports
 import Mongoose from "mongoose";
 import { Location } from "./location.js";
 import { runMongoStore } from "./run-mongo-store.js";
 
+// Locations Store
 export const locationMongoStore = {
   async getAllLocations() {
     const locations = await Location.find().lean();

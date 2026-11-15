@@ -1,6 +1,9 @@
+
+// Imports
 import * as dotenv from "dotenv";
 import Mongoose from "mongoose";
 
+// Connect Mongo
 export function connectMongo() {
   dotenv.config();
 
