@@ -25,6 +25,13 @@ export const locationMongoStore = {
     return this.getLocationById(locationObj._id);
   },
 
+  async updateLocation(updatedLocation) {
+    const location = await Location.findOne({ _id: updatedLocation._id });
+    location.title = updatedLocation.title;
+    location.img = updatedLocation.img;
+    await location.save();
+  },
+
   async getUserLocations(id) {
     const location = await Location.find({ userid: id }).lean();
     return location;
@@ -40,5 +47,5 @@ export const locationMongoStore = {
 
   async deleteAllLocations() {
     await Location.deleteMany({});
-  }
+  },
 };

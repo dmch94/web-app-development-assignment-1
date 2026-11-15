@@ -1,11 +1,16 @@
 {{! Include menu partial}}
 {{> menu}}
 
-{{! Display location title, list of associated runs and the add run button}}
-<section class="section">
-  <div class="title">
-    {{location.title}}
+<section class="section columns is-vcentered">
+  <div class="column has-text-centered">
+    <div class="title">
+      {{location.title}}
+    </div>
+    {{> list-runs}}
+    {{> add-run}}
   </div>
-  {{> list-runs}}
-  {{> add-run}}
+  <div class="column">
+    {{> location-image }}
+  </div>
 </section>
+
