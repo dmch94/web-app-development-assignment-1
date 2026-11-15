@@ -1,17 +1,17 @@
 {{! Include menu partial}}
 {{> menu}}
 
-<section class="columns is-vcentered">
-  <div class="column has-text-centered">
+<section class="section columns is-vcentered">
+  <div class="column">
     <div class="title">
       {{location.title}}
     </div>
-    <div class="is-flex">
-      <div>
+    <div class="is-flex" style="gap: 50px;">
+      <div class="is-flex">
         <p>Latitude: </p>
         {{location.latitude}}
       </div>
-      <div>
+      <div class="is-flex">
         <p>Longitude: </p>
         {{location.longitude}}
       </div>
