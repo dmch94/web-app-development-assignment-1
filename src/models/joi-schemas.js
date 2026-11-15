@@ -20,12 +20,32 @@ export const UserCredentialsSpec = {
   password: Joi.string().required(),
 };
 
-export const RunSpec = {
-  title: Joi.string().required(),
-  distance: Joi.number().required(),
-  duration: Joi.number().required(),
-};
 
-export const LocationSpec = {
-  title: Joi.string().required(),
-};
+// Run Schema
+
+export const RunSpec = Joi.object()
+  .keys({
+    title: Joi.string().example("Example Run").required(),
+    distance: Joi.number().example(10).required(),
+    duration: Joi.number().example(20).required(),
+    locationid: IdSpec,
+    _id: IdSpec,
+    __v: Joi.number(),
+  })
+  .label("RunDetails");
+
+export const RunArray = Joi.array().items(RunSpec).label("RunArray");
+
+// Location Schema
+
+export const LocationSpec = Joi.object()
+  .keys({
+    title: Joi.string().example("Example Location").required(),
+    userid: IdSpec,
+    runs: Joi.array().items(RunSpec),
+    _id: IdSpec,
+    __v: Joi.number(),
+  })
+  .label("LocationDetails");
+
+export const LocationArray = Joi.array().items(LocationSpec).label("LocationArray");

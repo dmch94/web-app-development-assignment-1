@@ -1,5 +1,7 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
+import { RunSpec, RunArray, IdSpec } from "../models/joi-schemas.js";
+import { validationError } from "./logger.js";
 
 export const runApi = {
   find: {
@@ -12,6 +14,10 @@ export const runApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Get all runApi",
+    notes: "Returns details of all runApi",
+    response: { schema: RunArray, failAction: validationError },
   },
 
   findOne: {
@@ -27,6 +33,11 @@ export const runApi = {
         return Boom.serverUnavailable("No run with this id");
       }
     },
+    tags: ["api"],
+    description: "Get a specific run",
+    notes: "Returns run details",
+    validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: RunSpec, failAction: validationError },
   },
 
   create: {
@@ -42,6 +53,11 @@ export const runApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Create a Run",
+    notes: "Returns the newly created run",
+    validate: { payload: RunSpec, failAction: validationError },
+    response: { schema: RunSpec, failAction: validationError },
   },
 
   deleteAll: {
@@ -54,6 +70,9 @@ export const runApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Delete all runApi",
+    notes: "All runApi removed from SpotRun",
   },
 
   deleteOne: {
@@ -70,5 +89,9 @@ export const runApi = {
         return Boom.serverUnavailable("No Run with this id");
       }
     },
+    tags: ["api"],
+    description: "Delete a specific runApi",
+    notes: "Specific run removed from SpotRun",
+    validate: { params: { id: IdSpec }, failAction: validationError },
   },
 };
